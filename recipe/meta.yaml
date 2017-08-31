@@ -10,12 +10,12 @@ source:
   sha256: 5c53e8ee4d4bec27879982b9f3b4aa2d6e3cfd7b26782d250fa117f85bb29814
 
 build:
-  number: 0
+  number: 1
   script: python -m pip install --no-deps .
   skip: True  # [py2k]
   entry_points:
     - ipython = IPython:start_ipython
-    - ipython3 = IPython:start_ipython  # [py3k]
+    - ipython3 = IPython:start_ipython
 
 requirements:
   host:
