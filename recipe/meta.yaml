@@ -8,8 +8,6 @@ source:
   fn: ipython-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/i/ipython/ipython-{{ version }}.tar.gz
   sha256: eca537aa61592aca2fef4adea12af8e42f5c335004dfa80c78caf80e8b525e5c
-  patches:
-    - bf676a5f1dde1f21bcd8e276ac21f6e2b86b661b.patch
 
 build:
   number: 1
@@ -27,7 +25,7 @@ requirements:
     - python
     - pickleshare
     - simplegeneric >0.8
-    - prompt_toolkit >=2.0.0,<2.1.0
+    - prompt_toolkit >=1.0.4,<2.0.0
     - pygments
     - decorator
     - traitlets >=4.2
