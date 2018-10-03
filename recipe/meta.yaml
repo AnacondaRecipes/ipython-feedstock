@@ -38,7 +38,6 @@ requirements:
 
 test:
   requires:
-    - curio  # [unix]
     - nbformat
     - nose >=0.10.1
     - numpy
@@ -46,7 +45,6 @@ test:
     - requests
     - testpath
     - ipykernel
-    - trio
     - matplotlib
     - pip
   imports:
