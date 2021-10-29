@@ -57,6 +57,8 @@ test:
     - testpath
     - trio
     - ipykernel
+    # on aarch64 conda-build uses parso 0.7.0 and it causes the build failed
+    - parso >=0.8.0,<0.9.0  # [linux and aarch64]
     {% endif %}
 
   imports:
