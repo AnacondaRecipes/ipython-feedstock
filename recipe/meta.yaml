@@ -1,4 +1,4 @@
-{% set version = "7.29.0" %}
+{% set version = "8.0.0" %}
 
 {% set migrating = False %}
 {% set migrating = True %}  # [win and python_impl == 'pypy']
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/i/ipython/ipython-{{ version }}.tar.gz
-  sha256: 4f69d7423a5a1972f6347ff233e38bbf4df6a150ef20fbb00c635442ac3060aa
+  sha256: 004a0d05aeecd32adec4841b6e2586d5ca35785b1477db4d8333a39333e0ce98
 
 build:
   number: 0
