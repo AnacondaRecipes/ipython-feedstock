@@ -1,4 +1,4 @@
-{% set version = "7.29.0" %}
+{% set version = "7.31.1" %}
 
 {% set migrating = False %}
 {% set migrating = True %}  # [win and python_impl == 'pypy']
@@ -9,12 +9,17 @@ package:
 
 source:
   url: https://pypi.io/packages/source/i/ipython/ipython-{{ version }}.tar.gz
-  sha256: 4f69d7423a5a1972f6347ff233e38bbf4df6a150ef20fbb00c635442ac3060aa
+  sha256: b5548ec5329a4bcf054a5deed5099b0f9622eb9ea51aaa7104d215fece201d8c
 
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps
   skip: true  # [py<37]
+  script_env:
+    # Use MIGRATING environment variable instead of duplicating conditions into run_test.py.
+    # Combine script_env stanzas to avoid clobber
+    - MIGRATING={{ migrating }}
+    - IPYTHON_TESTING_TIMEOUT_SCALE=5
   entry_points:
     - ipython = IPython:start_ipython
     - ipython3 = IPython:start_ipython
@@ -32,7 +37,7 @@ requirements:
     - backcall
     - colorama  # [win]
     - decorator
-    - jedi >=0.16,<1.0
+    - jedi >=0.16
     # earlier versions depended on ipython
     - matplotlib-inline >=0.1.2
     - pexpect >4.3  # [unix]
@@ -48,15 +53,16 @@ test:
     - pip
     {% if not migrating %}
     - curio  # [unix]
+    - ipykernel
     - matplotlib-base
     - nbformat
     - nose >=0.10.1
-    - numpy
+    - numpy >=1.17
+    - pytest
     - pygments
     - requests
     - testpath
     - trio
-    - ipykernel
     {% endif %}
 
   imports:
