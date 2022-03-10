@@ -26,13 +26,10 @@ build:
     - ipython3 = IPython:start_ipython
 
 requirements:
-  build:
-    - python                                 # [build_platform != target_platform]
-    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
   host:
     - pip
     - python
-    - setuptools
+    - setuptools >=51.0.0
     - wheel
   run:
     - python
@@ -62,7 +59,7 @@ test:
     - numpy >=1.19
     - pandas
     - pygments
-    - pytest <7
+    - pytest
     - pytest-cov
     - testpath
     - trio
