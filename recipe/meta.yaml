@@ -15,6 +15,7 @@ build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps
 
   skip: true  # [py<38]
+  skip: true  # [py>38 and ppc64le] # missing matplotlib?
   script_env:
     - MIGRATING={{ migrating }}
     # TODO: investigate removing when some pypy/coverage speed issues are resolved
