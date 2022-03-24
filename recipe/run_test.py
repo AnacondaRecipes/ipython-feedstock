@@ -25,7 +25,7 @@ if LINUX:
     PYTEST_SKIPS += ["system_interrupt"]
 
 if PPC:
-    PYTEST_SKIPS += ["ipython_dir_8", "audio_data"]
+    PYTEST_SKIPS += ["ipython_dir_8", "audio_data", "test_figure_to_svg", "test_figure_to_jpeg", "test_retina_figure", "test_select_figure_formats_kwargs"]
 
 if COV_THRESHOLD is not None:
     PYTEST_ARGS += [
