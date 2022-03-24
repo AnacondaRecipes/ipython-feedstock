@@ -59,6 +59,7 @@ test:
     - pandas
     - pygments
     - pytest
+    - pytest-asyncio
     - pytest-cov
     - testpath
     - trio
