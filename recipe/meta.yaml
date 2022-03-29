@@ -50,7 +50,6 @@ requirements:
 
 test:
   requires:
-    - python <3.10.1
     - pip
     {% if not migrating %}
     - curio  # [unix]
@@ -60,7 +59,6 @@ test:
     - nose >=0.10.1
     - numpy >=1.17
     - pytest
-    - pygments
     - requests
     - testpath
     - trio
