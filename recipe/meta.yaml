@@ -50,6 +50,7 @@ requirements:
 
 test:
   requires:
+    - python <3.10.3
     - pip
     {% if not migrating %}
     - curio  # [unix]
