@@ -52,16 +52,13 @@ test:
   requires:
     - pip
     {% if not migrating %}
-    - curio  # [unix]
     - ipykernel
-    - matplotlib-base
     - nbformat
     - nose >=0.10.1
     - numpy >=1.17
-    - pytest
+    - pygments
     - requests
     - testpath
-    - trio
     {% endif %}
 
   imports:
