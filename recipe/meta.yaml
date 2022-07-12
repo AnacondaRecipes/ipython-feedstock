@@ -1,5 +1,6 @@
-{% set version = "8.3.0" %}
-
+{% set version = "8.4.0" %}
+{% set build_number = "0" %}
+{% set checksum = "f2db3a10254241d9b447232cec8b424847f338d9d36f9a577a6192c332a46abd" %}
 {% set migrating = false %}
 
 package:
@@ -8,10 +9,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/i/ipython/ipython-{{ version }}.tar.gz
-  sha256: 807ae3cf43b84693c9272f70368440a9a7eaa2e7e6882dad943c32fbf7e51402
+  sha256: {{ checksum }}
 
 build:
-  number: 0
+  number: {{ build_number }}
   script: {{ PYTHON }} -m pip install . -vv --no-deps
   skip: true  # [py<38]
   script_env:
