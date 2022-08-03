@@ -92,8 +92,10 @@ test:
     - ipython -h
     - ipython3 -h
     {% if not migrating %}
-    - iptest -h
-    - iptest3 -h
+    - iptest -h  || true  # [not win]
+    - iptest3 -h  || true  # [not win]
+    - iptest -h || 1  # [win]
+    - iptest3 -h || 1  # [win]
     {% endif %}
 
 about:
