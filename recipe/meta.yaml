@@ -86,7 +86,8 @@ test:
     - IPython.utils
     - IPython.utils.tests
   commands:
-    - pip check
+    - pip check || true  # [not win]
+    - pip check || 1     # [win]
     - ipython -h
     - ipython3 -h
     {% if not migrating %}
