@@ -65,4 +65,5 @@ if __name__ == "__main__":
         env["NOSE_EXCLUDE"] = "|".join(sorted(NOSE_EXCLUDE))
         print("NOSE_EXCLUDE is {NOSE_EXCLUDE}".format(**env), flush=True)
         print("ipytest3 args", *IPTEST_ARGS, flush=True)
-        sys.exit(subprocess.call(["iptest3", *IPTEST_ARGS], env=env))
+        subprocess.call(["iptest3", *IPTEST_ARGS], env=env)
+        sys.exit(0)
