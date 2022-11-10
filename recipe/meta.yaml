@@ -1,14 +1,15 @@
+{% set name = "ipython" %}
 {% set version = "8.6.0" %}
 {% set build_number = "0" %}
 {% set checksum = "7c959e3dedbf7ed81f9b9d8833df252c430610e2a4a6464ec13cd20975ce20a5" %}
 {% set migrating = false %}
 
 package:
-  name: ipython
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/i/ipython/ipython-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ checksum }}
 
 build:
@@ -31,7 +32,7 @@ requirements:
   host:
     - pip
     - python
-    - setuptools >=51.0.0
+    - setuptools
     - wheel
   run:
     - python
@@ -44,9 +45,8 @@ requirements:
     - matplotlib-inline >=0.1.2
     - pexpect >4.3  # [unix]
     - pickleshare
-    - prompt-toolkit >=2.0.0,<3.1.0,!=3.0.0,!=3.0.1
+    - prompt-toolkit >3.0.1,<3.1.0
     - pygments >=2.4.0
-    - setuptools >=18.5
     - stack_data
     - traitlets >=5
 
@@ -58,10 +58,11 @@ test:
     - curio  # [unix]
     - matplotlib-base !=3.2.0
     - nbformat
-    - numpy >=1.19
+    - numpy >=1.20
     - pandas
     - pygments
-    - pytest <7
+    - pytest <7.1
+    - pytest-asyncio
     - pytest-cov
     - testpath
     - trio
