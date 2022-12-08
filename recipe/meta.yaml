@@ -11,6 +11,9 @@ package:
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ checksum }}
+  patches:
+    - 0000-no-minor-entry-point.patch
+    {% if version == "8.7.0" %}- 0001-restore-pygments-lexers.patch{% endif %}
 
 build:
   number: {{ build_number }}
@@ -27,8 +30,13 @@ build:
   entry_points:
     - ipython = IPython:start_ipython
     - ipython3 = IPython:start_ipython
+    # provided by _ipython_minor_entry_point
+    # ipython3.X = IPython:start_ipython
 
 requirements:
+  build:
+    - m2-patch  # [win]
+    - patch     # [not win]
   host:
     - pip
     - python
@@ -89,8 +97,11 @@ test:
     - IPython.utils.tests
   commands:
     - pip check
+    - pygmentize -L | grep ipython
     - ipython -h
     - ipython3 -h
+    # this is tested in run_test.py
+    # - ipython3.X -h
 
 about:
   home: https://ipython.org

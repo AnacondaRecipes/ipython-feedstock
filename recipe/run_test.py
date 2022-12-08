@@ -43,6 +43,10 @@ if __name__ == "__main__":
     print("Building on Linux?  ", LINUX)
     print("Building for PyPy?  ", PYPY)
 
+    print("Checking minor entry point", MINOR_ENTRY_POINT, flush=True)
+
+    subprocess.check_call(f"{MINOR_ENTRY_POINT} -h", shell=True)
+
     if MIGRATING:
         print("This is a migration, skipping test suite! Put it back later!", flush=True)
         sys.exit(0)
