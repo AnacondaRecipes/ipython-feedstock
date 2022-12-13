@@ -43,7 +43,7 @@ requirements:
     - wheel
   run:
     - python
-    - appnope  # [osx]
+    - appnope   # [osx]
     - backcall
     - colorama  # [win]
     - decorator
