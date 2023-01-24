@@ -70,25 +70,6 @@ test:
     - trio
     {% endif %}
 
-  imports:
-    - IPython
-    - IPython.core
-    - IPython.core.magics
-    - IPython.core.tests
-    - IPython.extensions
-    - IPython.extensions.tests
-    - IPython.external
-    - IPython.lib
-    - IPython.lib.tests
-    - IPython.sphinxext
-    - IPython.terminal
-    - IPython.terminal.pt_inputhooks
-    - IPython.terminal.tests
-    - IPython.testing
-    - IPython.testing.plugin
-    - IPython.testing.tests
-    - IPython.utils
-    - IPython.utils.tests
   commands:
     - pip check
     - pygmentize -L | grep ipython
