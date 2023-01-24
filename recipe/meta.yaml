@@ -31,8 +31,6 @@ build:
     - ipython3 = IPython:start_ipython
 
 requirements:
-  build:
-    number: 0
   host:
     - pip
     - python
