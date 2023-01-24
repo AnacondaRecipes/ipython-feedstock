@@ -13,8 +13,6 @@ source:
   sha256: {{ checksum }}
   # Restoring pygments lexers is needed only for v8.7.0. 
   # Check if it can be removed in the next release.
-  patches:
-    - 0001-restore-pygments-lexers.patch
 
 build:
   number: {{ build_number }}
