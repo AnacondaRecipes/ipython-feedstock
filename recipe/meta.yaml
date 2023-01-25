@@ -11,8 +11,6 @@ package:
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ checksum }}
-  # Restoring pygments lexers is needed only for v8.7.0. 
-  # Check if it can be removed in the next release.
 
 build:
   number: {{ build_number }}
