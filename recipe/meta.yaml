@@ -1,7 +1,7 @@
 {% set name = "ipython" %}
-{% set version = "8.7.0" %}
+{% set version = "8.8.0" %}
 {% set build_number = "0" %}
-{% set checksum = "882899fe78d5417a0aa07f995db298fa28b58faeba2112d2e3a4c95fe14bb738" %}
+{% set checksum = "f3bf2c08505ad2c3f4ed5c46ae0331a8547d36bf4b21a451e8ae80c0791db95b" %}
 {% set migrating = false %}
 
 package:
@@ -11,10 +11,6 @@ package:
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ checksum }}
-  # Restoring pygments lexers is needed only for v8.7.0. 
-  # Check if it can be removed in the next release.
-  patches:
-    - 0001-restore-pygments-lexers.patch
 
 build:
   number: {{ build_number }}
@@ -33,9 +29,6 @@ build:
     - ipython3 = IPython:start_ipython
 
 requirements:
-  build:
-    - m2-patch  # [win]
-    - patch     # [not win]
   host:
     - pip
     - python
@@ -75,25 +68,6 @@ test:
     - trio
     {% endif %}
 
-  imports:
-    - IPython
-    - IPython.core
-    - IPython.core.magics
-    - IPython.core.tests
-    - IPython.extensions
-    - IPython.extensions.tests
-    - IPython.external
-    - IPython.lib
-    - IPython.lib.tests
-    - IPython.sphinxext
-    - IPython.terminal
-    - IPython.terminal.pt_inputhooks
-    - IPython.terminal.tests
-    - IPython.testing
-    - IPython.testing.plugin
-    - IPython.testing.tests
-    - IPython.utils
-    - IPython.utils.tests
   commands:
     - pip check
     - pygmentize -L | grep ipython
