@@ -21,7 +21,7 @@ build:
     # TODO: investigate removing when some pypy/coverage speed issues are resolved
     - IPYTHON_TESTING_TIMEOUT_SCALE=10
     - COV_THRESHOLD=72  # [win]
-    - COV_THRESHOLD=73  # [unix]
+    - COV_THRESHOLD=73  # [(linux and not ppc64le) or osx]
     # 2022/4/1: Tests fail on ppc64le with total coverage: 63.63%
     - COV_THRESHOLD=63  # [linux and ppc64le]
   entry_points:
