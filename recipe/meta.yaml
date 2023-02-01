@@ -32,9 +32,8 @@ requirements:
   host:
     - pip
     - python
-    - setuptools
-    - wheel
     - setuptools >=51.0.0
+    - wheel
   run:
     - python
     - appnope   # [osx]
@@ -42,7 +41,6 @@ requirements:
     - colorama  # [win]
     - decorator
     - jedi >=0.16
-    # earlier versions depended on ipython
     - matplotlib-inline
     - pexpect >4.3  # [unix]
     - pickleshare
