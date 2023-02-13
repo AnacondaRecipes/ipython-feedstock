@@ -1,7 +1,7 @@
 {% set name = "ipython" %}
-{% set version = "8.8.0" %}
+{% set version = "8.9.0" %}
 {% set build_number = "0" %}
-{% set checksum = "f3bf2c08505ad2c3f4ed5c46ae0331a8547d36bf4b21a451e8ae80c0791db95b" %}
+{% set checksum = "71618e82e6d59487bea059626e7c79fb4a5b760d1510d02fab1160db6fdfa1f7" %}
 {% set migrating = false %}
 
 package:
@@ -41,11 +41,10 @@ requirements:
     - colorama  # [win]
     - decorator
     - jedi >=0.16
-    # earlier versions depended on ipython
-    - matplotlib-inline >=0.1.2
+    - matplotlib-inline
     - pexpect >4.3  # [unix]
     - pickleshare
-    - prompt-toolkit >3.0.11,<3.1.0
+    - prompt-toolkit >3.0.30,<3.1.0
     - pygments >=2.4.0
     - stack_data
     - traitlets >=5
@@ -55,7 +54,7 @@ test:
     - pip
     {% if not migrating %}
     - black
-    - curio  # [unix]
+    - curio
     - matplotlib-base !=3.2.0
     - nbformat
     - numpy >=1.20
