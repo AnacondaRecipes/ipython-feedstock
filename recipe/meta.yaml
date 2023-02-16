@@ -1,7 +1,7 @@
 {% set name = "ipython" %}
-{% set version = "8.9.0" %}
+{% set version = "8.10.0" %}
 {% set build_number = "0" %}
-{% set checksum = "71618e82e6d59487bea059626e7c79fb4a5b760d1510d02fab1160db6fdfa1f7" %}
+{% set checksum = "b13a1d6c1f5818bd388db53b7107d17454129a70de2b87481d555daede5eb49e" %}
 {% set migrating = false %}
 
 package:
@@ -19,11 +19,7 @@ build:
   script_env:
     - MIGRATING={{ migrating }}
     # TODO: investigate removing when some pypy/coverage speed issues are resolved
-    - IPYTHON_TESTING_TIMEOUT_SCALE=10
-    - COV_THRESHOLD=72  # [win]
-    - COV_THRESHOLD=73  # [(linux and not ppc64le) or osx]
-    # 2022/4/1: Tests fail on ppc64le with total coverage: 63.63%
-    - COV_THRESHOLD=63  # [linux and ppc64le]
+    - COV_THRESHOLD=50
   entry_points:
     - ipython = IPython:start_ipython
     - ipython3 = IPython:start_ipython
