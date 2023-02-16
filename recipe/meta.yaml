@@ -18,7 +18,12 @@ build:
   skip: true  # [py<38]
   script_env:
     - MIGRATING={{ migrating }}
-    - COV_THRESHOLD=50
+    # TODO: investigate removing when some pypy/coverage speed issues are resolved
+    - IPYTHON_TESTING_TIMEOUT_SCALE=10
+    - COV_THRESHOLD=50  # [win]
+    - COV_THRESHOLD=50  # [(linux and not ppc64le) or osx]
+    # 2022/4/1: Tests fail on ppc64le with total coverage: 63.63%
+    - COV_THRESHOLD=50  # [linux and ppc64le]
   entry_points:
     - ipython = IPython:start_ipython
     - ipython3 = IPython:start_ipython
