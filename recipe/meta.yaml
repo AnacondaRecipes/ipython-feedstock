@@ -19,7 +19,7 @@ build:
   script_env:
     - MIGRATING={{ migrating }}
     # TODO: investigate removing when some pypy/coverage speed issues are resolved
-    - IPYTHON_TESTING_TIMEOUT_SCALE=10
+    # - IPYTHON_TESTING_TIMEOUT_SCALE=10
     - COV_THRESHOLD=50
   entry_points:
     - ipython = IPython:start_ipython
