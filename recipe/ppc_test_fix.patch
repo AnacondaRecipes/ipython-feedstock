@@ -1,0 +1,12 @@
+diff --git a/IPython/core/tests/test_debugger.py b/IPython/core/tests/test_debugger.py
+index 5f7f98d3c..f5cbaaded 100644
+--- a/IPython/core/tests/test_debugger.py
++++ b/IPython/core/tests/test_debugger.py
+@@ -305,6 +305,7 @@ def g():
+     child.expect("__traceba")
+     child.expect("ipdb>")
+ 
++    child.delayafterterminate = 1
+     child.close()
+ 
+ 

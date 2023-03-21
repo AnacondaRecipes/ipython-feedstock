@@ -11,6 +11,8 @@ package:
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ checksum }}
+  patches:  # [ppc64le]
+    - ppc_test_fix.patch  # [ppc64le]
 
 build:
   number: {{ build_number }}
@@ -25,6 +27,8 @@ build:
     - ipython3 = IPython:start_ipython
 
 requirements:
+  build:  # [ppc64le]
+    - patch  # [ppc64le]
   host:
     - pip
     - python
