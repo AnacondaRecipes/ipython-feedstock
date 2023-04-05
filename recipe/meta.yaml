@@ -1,7 +1,5 @@
 {% set name = "ipython" %}
-{% set version = "8.10.0" %}
-{% set build_number = "0" %}
-{% set checksum = "b13a1d6c1f5818bd388db53b7107d17454129a70de2b87481d555daede5eb49e" %}
+{% set version = "8.12.0" %}
 {% set migrating = false %}
 
 package:
@@ -10,10 +8,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ checksum }}
+  sha256: a950236df04ad75b5bc7f816f9af3d74dc118fd42f2ff7e80e8e60ca1f182e2d
 
 build:
-  number: {{ build_number }}
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps
   skip: true  # [py<38]
   script_env:
@@ -40,20 +38,21 @@ requirements:
     - matplotlib-inline
     - pexpect >4.3  # [unix]
     - pickleshare
-    - prompt-toolkit >3.0.30,<3.1.0
+    - prompt-toolkit >3.0.30,<3.1.0,!=3.0.37
     - pygments >=2.4.0
     - stack_data
     - traitlets >=5
+    - typing_extensions # [py<310]
 
 test:
   requires:
     - pip
     {% if not migrating %}
-    - black
+    #- black
     - curio
     - matplotlib-base !=3.2.0
     - nbformat
-    - numpy >=1.20
+    - numpy >=1.21
     - pandas
     - pygments
     - pytest <7.1
