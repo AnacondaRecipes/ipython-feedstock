@@ -1,5 +1,5 @@
 {% set name = "ipython" %}
-{% set version = "8.12.2" %}
+{% set version = "8.15.0" %}
 {% set migrating = false %}
 
 package:
@@ -8,12 +8,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: c7b80eb7f5a855a88efc971fda506ff7a91c280b42cdae26643e0f601ea281ea
+  sha256: 2baeb5be6949eeebf532150f81746f8333e2ccce02de1c7eedde3f23ed5e9f1e
 
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  skip: true  # [py<38]
+  skip: true  # [py<39]
   script_env:
     - MIGRATING={{ migrating }}
     # TODO: investigate removing when some pypy/coverage speed issues are resolved
@@ -34,6 +34,7 @@ requirements:
     - backcall
     - colorama  # [win]
     - decorator
+    - exceptiongroup  # [py<311]
     - jedi >=0.16
     - matplotlib-inline
     - pexpect >4.3  # [unix]
@@ -42,7 +43,7 @@ requirements:
     - pygments >=2.4.0
     - stack_data
     - traitlets >=5
-    - typing_extensions # [py<310]
+    - typing_extensions  # [py<310]
 
 test:
   requires:
