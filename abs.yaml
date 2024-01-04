@@ -1,1 +1,3 @@
 aggregate_branch: 3.12
+
+staging_channel_upload_target: ipython_8.19.0
