@@ -1,5 +1,5 @@
 {% set name = "ipython" %}
-{% set version = "8.15.0" %}
+{% set version = "8.19.0" %}
 {% set migrating = false %}
 
 package:
@@ -8,12 +8,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 2baeb5be6949eeebf532150f81746f8333e2ccce02de1c7eedde3f23ed5e9f1e
+  sha256: ac4da4ecf0042fb4e0ce57c60430c2db3c719fa8bdf92f8631d6bd8a5785d1f0
 
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  skip: true  # [py<39]
+  skip: true  # [py<310]
   script_env:
     - MIGRATING={{ migrating }}
     # TODO: investigate removing when some pypy/coverage speed issues are resolved
