@@ -30,20 +30,15 @@ requirements:
     - wheel
   run:
     - python
-    - appnope   # [osx]
-    - backcall
-    - colorama  # [win]
     - decorator
     - exceptiongroup  # [py<311]
-    - jedi >=0.16
+    - jedi>=0.16
     - matplotlib-inline
-    - pexpect >4.3  # [unix]
-    - pickleshare
-    - prompt-toolkit >3.0.30,<3.1.0,!=3.0.37
-    - pygments >=2.4.0
+    - pexpect>4.3
+    - prompt_toolkit>=3.0.41,<3.1.0
+    - pygments>=2.4.0
     - stack_data
-    - traitlets >=5
-    - typing_extensions  # [py<310]
+    - traitlets>=5
 
 test:
   requires:
