@@ -45,8 +45,9 @@ test:
   requires:
     - pip
     {% if not migrating %}
-    - pytest <7.1
-    - pytest-asyncio
+    - pytest <7.1  # [py<312]
+    - pytest  # [py>=312]
+    - pytest-asyncio <0.22
     - testpath
     - pickleshare
     - curio
