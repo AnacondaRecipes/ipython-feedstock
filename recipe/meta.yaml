@@ -35,7 +35,7 @@ requirements:
     - exceptiongroup  # [py<311]
     - jedi >=0.16
     - matplotlib-inline
-    - pexpect >4.3
+    - pexpect >4.3  # [not win]
     - prompt_toolkit >=3.0.41,<3.1.0
     - pygments >=2.4.0
     - stack_data
