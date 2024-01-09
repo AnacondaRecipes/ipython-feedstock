@@ -45,7 +45,7 @@ test:
   requires:
     - pip
     {% if not migrating %}
-    - pytest
+    - pytest <7.1
     - pytest-asyncio
     - testpath
     - pickleshare
