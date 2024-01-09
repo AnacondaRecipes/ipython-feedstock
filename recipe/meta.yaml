@@ -45,16 +45,17 @@ test:
   requires:
     - pip
     {% if not migrating %}
+    - pytest <7.1
+    - pytest-asyncio
+    - testpath
+    - pickleshare
     - curio
     - matplotlib-base !=3.2.0
     - nbformat
-    - numpy >=1.21
+    - numpy >=1.23
     - pandas
     - pygments
-    - pytest <7.1
-    - pytest-asyncio
     - pytest-cov
-    - testpath
     - trio
     {% endif %}
 
