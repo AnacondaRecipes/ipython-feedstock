@@ -1,5 +1,5 @@
 {% set name = "ipython" %}
-{% set version = "8.20.0" %}
+{% set version = "8.25.0" %}
 {% set migrating = false %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 2f21bd3fc1d51550c89ee3944ae04bbc7bc79e129ea0937da6e6c68bfdbf117a
+  sha256: c6ed726a140b6e725b911528f80439c534fac915246af3efc39440a6b0f9d716
 
 build:
   number: 0
