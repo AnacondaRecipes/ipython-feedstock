@@ -55,7 +55,7 @@ test:
     - pygmentize -L | grep ipython
     - ipython -h
     - ipython3 -h
-    - export MIGRATING=false
+    - export MIGRATING=false  # [unix]
 
 about:
   home: https://ipython.org
