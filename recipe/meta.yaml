@@ -1,6 +1,5 @@
 {% set name = "ipython" %}
 {% set version = "8.25.0" %}
-{% set migrating = false %}
 
 package:
   name: {{ name|lower }}
@@ -14,8 +13,6 @@ build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   skip: true  # [py<310]
-  script_env:
-    - MIGRATING={{ migrating }}
   entry_points:
     - ipython = IPython:start_ipython
     - ipython3 = IPython:start_ipython
@@ -43,7 +40,6 @@ requirements:
 test:
   requires:
     - pip
-    {% if not migrating %}
     - pytest
     - pytest-asyncio <0.22
     - testpath
@@ -54,7 +50,6 @@ test:
     - numpy >=1.23
     - pandas
     - trio
-    {% endif %}
   commands:
     - pip check
     - pygmentize -L | grep ipython
