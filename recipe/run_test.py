@@ -2,24 +2,6 @@ import subprocess
 import platform
 import os
 import sys
-import IPython
-import IPython.core
-import IPython.core.magics
-import IPython.core.tests
-import IPython.extensions
-import IPython.extensions.tests
-import IPython.external
-import IPython.lib
-import IPython.lib.tests
-import IPython.sphinxext
-import IPython.terminal
-import IPython.terminal.pt_inputhooks
-import IPython.terminal.tests
-import IPython.testing
-import IPython.testing.plugin
-import IPython.testing.tests
-import IPython.utils.tests
-import IPython.utils
 
 WIN = platform.system() == "Windows"
 LINUX = platform.system() == "Linux"
