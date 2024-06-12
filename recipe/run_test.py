@@ -37,9 +37,6 @@ else:
 if LINUX:
     PYTEST_SKIPS += ["system_interrupt"]
 
-if PPC:
-    PYTEST_SKIPS += ["ipython_dir_8", "audio_data"]
-
 if len(PYTEST_SKIPS) == 1:
     PYTEST_ARGS += ["-k", f"not {PYTEST_SKIPS[0]}"]
 elif PYTEST_SKIPS:
