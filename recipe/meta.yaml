@@ -16,8 +16,6 @@ build:
   skip: true  # [py<310]
   script_env:
     - MIGRATING={{ migrating }}
-    # TODO: investigate removing when some pypy/coverage speed issues are resolved
-    - COV_THRESHOLD=50
   entry_points:
     - ipython = IPython:start_ipython
     - ipython3 = IPython:start_ipython
