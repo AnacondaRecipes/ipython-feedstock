@@ -1,5 +1,5 @@
 {% set name = "ipython" %}
-{% set version = "8.27.0" %}
+{% set version = "8.29.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 0b99a2dc9f15fd68692e898e5568725c6d49c527d36a9fb5960ffbdeaa82ff7e
+  sha256: 40b60e15b22591450eef73e40a027cf77bd652e757523eebc5bd7c7c498290eb
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
@@ -37,24 +37,106 @@ requirements:
     - typing_extensions >=4.6 # [py<312]
 
 test:
+  source_files:
+    - setup.py
+  imports:
+    - IPython
+    - IPython.conftest
+    - IPython.core
+    - IPython.core.magics
+    - IPython.extensions
+    # - IPython.external.qt_for_kernel
+    # - IPython.external.qt_loaders
+    - IPython.lib
+    - IPython.paths
+    # - IPython.sphinxext.ipython_console_highlighting
+    - IPython.terminal.debugger
+    - IPython.terminal.embed
+    - IPython.terminal.interactiveshell
+    - IPython.terminal.magics
+    - IPython.terminal.prompts
+    - IPython.terminal.pt_inputhooks
+    - IPython.terminal.pt_inputhooks.asyncio
+    # - IPython.terminal.pt_inputhooks.glut
+    # - IPython.terminal.pt_inputhooks.gtk
+    # - IPython.terminal.pt_inputhooks.gtk3
+    # - IPython.terminal.pt_inputhooks.gtk4
+    - IPython.terminal.pt_inputhooks.osx
+    # - IPython.terminal.pt_inputhooks.pyglet
+    # - IPython.terminal.pt_inputhooks.qt
+    # - IPython.terminal.pt_inputhooks.tk
+    # - IPython.terminal.pt_inputhooks.wx
+    - IPython.terminal.ptutils
+    - IPython.terminal.shortcuts
+    - IPython.terminal.shortcuts.auto_match
+    - IPython.terminal.shortcuts.auto_suggest
+    - IPython.terminal.shortcuts.filters
+    # - IPython.utils._process_cli
+    - IPython.utils._process_common
+    - IPython.utils._process_emscripten
+    - IPython.utils._process_posix
+    - IPython.utils.capture
+    - IPython.utils.coloransi
+    - IPython.utils.contexts
+    - IPython.utils.data
+    - IPython.utils.decorators
+    - IPython.utils.dir2
+    - IPython.utils.encoding
+    - IPython.utils.frame
+    - IPython.utils.generics
+    - IPython.utils.importstring
+    - IPython.utils.io
+    - IPython.utils.ipstruct
+    - IPython.utils.module_paths
+    - IPython.utils.openpy
+    - IPython.utils.process
+    - IPython.utils.py3compat
+    - IPython.utils.sentinel
+    - IPython.utils.shimmodule
+    - IPython.utils.strdispatch
+    - IPython.utils.sysinfo
+    - IPython.utils.syspathcontext
+    - IPython.utils.tempdir
+    - IPython.utils.terminal
+    - IPython.utils.timing
+    - IPython.utils.tokenutil
+    # - IPython.utils.tz
+    - IPython.utils.ulinecache
+    # - IPython.utils.version
+    - IPython.utils.wildcard
+    # - IPython.terminal.pt_inputhooks
+    - IPython.terminal.tests
+    - IPython.testing
+    - IPython.testing.plugin
+    - IPython.testing.plugin.pytest_ipdoctest
+    - IPython.testing.tests
+    - IPython.utils.tests
   requires:
     - pip
     - pytest
     - pytest-asyncio <0.22
     - testpath
     - pickleshare
+    - packaging
     - curio
     - matplotlib-base !=3.2.0
     - nbformat
     - numpy >=1.23
     - pandas
     - trio
+    - jupyter_client
   commands:
     - pip check
     - pygmentize -L | grep ipython
     - ipython -h
     - ipython3 -h
-    - export MIGRATING=false  # [unix]
+     {% set pytest_args = " --ignore-glob=consoleapp.py" %}
+     {% set pytest_args = pytest_args + " --ignore-glob=external/*.py" %}
+     {% set pytest_args = pytest_args + " --ignore-glob=sphinxext/*.py" %}
+     {% set pytest_args = pytest_args + " --ignore-glob=terminal/console*.py" %}
+     {% set pytest_args = pytest_args + " --ignore-glob=terminal/pt_inputhooks/*.py" %}
+     {% set pytest_args = pytest_args + " --ignore-glob=utils/*.py" %}
+    - python -m pytest -vv --pyargs IPython --maxfail=15 -k "not (decorator_skip or pprint_heap_allocated or system_interrupt)" {{ pytest_args }}
 
 about:
   home: https://ipython.org
