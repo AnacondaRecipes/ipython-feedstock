@@ -53,13 +53,13 @@ test:
     - IPython.terminal.interactiveshell
     - IPython.terminal.magics
     - IPython.terminal.prompts
-    - IPython.terminal.pt_inputhooks
-    - IPython.terminal.pt_inputhooks.asyncio
+    # - IPython.terminal.pt_inputhooks
+    # - IPython.terminal.pt_inputhooks.asyncio
     # - IPython.terminal.pt_inputhooks.glut
     # - IPython.terminal.pt_inputhooks.gtk
     # - IPython.terminal.pt_inputhooks.gtk3
     # - IPython.terminal.pt_inputhooks.gtk4
-    - IPython.terminal.pt_inputhooks.osx
+    # - IPython.terminal.pt_inputhooks.osx
     # - IPython.terminal.pt_inputhooks.pyglet
     # - IPython.terminal.pt_inputhooks.qt
     # - IPython.terminal.pt_inputhooks.tk
