@@ -69,6 +69,11 @@ test:
     - IPython.terminal.shortcuts.auto_match
     - IPython.terminal.shortcuts.auto_suggest
     - IPython.terminal.shortcuts.filters
+    - IPython.terminal.tests
+    - IPython.testing
+    - IPython.testing.plugin
+    - IPython.testing.plugin.pytest_ipdoctest
+    - IPython.testing.tests
     # - IPython.utils._process_cli
     - IPython.utils._process_common
     - IPython.utils._process_emscripten
@@ -96,19 +101,13 @@ test:
     - IPython.utils.syspathcontext
     - IPython.utils.tempdir
     - IPython.utils.terminal
+    - IPython.utils.tests
     - IPython.utils.timing
     - IPython.utils.tokenutil
     # - IPython.utils.tz
     - IPython.utils.ulinecache
     # - IPython.utils.version
     - IPython.utils.wildcard
-    # - IPython.terminal.pt_inputhooks
-    - IPython.terminal.tests
-    - IPython.testing
-    - IPython.testing.plugin
-    - IPython.testing.plugin.pytest_ipdoctest
-    - IPython.testing.tests
-    - IPython.utils.tests
   requires:
     - pip
     - pytest
