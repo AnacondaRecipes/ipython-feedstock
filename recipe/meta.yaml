@@ -20,11 +20,13 @@ build:
 requirements:
   host:
     - pip
-    - python
+    - python  # [py<313]
+    - python 3.13.0  # [py==313]
     - setuptools
     - wheel
   run:
-    - python
+    - python  # [py<313]
+    - python 3.13.0  # [py==313]
     - colorama  # [win]
     - decorator
     - exceptiongroup  # [py<311]
@@ -50,6 +52,7 @@ test:
     - numpy >=1.23
     - pandas
     - trio
+    - python 3.13.0  # [py==313]
   commands:
     - pip check
     - pygmentize -L | grep ipython
