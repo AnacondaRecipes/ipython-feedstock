@@ -20,13 +20,11 @@ build:
 requirements:
   host:
     - pip
-    - python  # [py<313]
-    - python 3.13.0  # [py==313]
+    - python
     - setuptools
     - wheel
   run:
-    - python  # [py<313]
-    - python 3.13.0  # [py==313]
+    - python
     - colorama  # [win]
     - decorator
     - exceptiongroup  # [py<311]
