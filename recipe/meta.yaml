@@ -25,11 +25,11 @@ requirements:
     - m2-patch  # [win]
   host:
     - pip
-    - python !=3.13.1
+    - python
     - setuptools
     - wheel
   run:
-    - python !=3.13.1
+    - python
     - colorama  # [win]
     - decorator
     - exceptiongroup  # [py<311]
@@ -55,7 +55,7 @@ test:
     - numpy >=1.23
     - pandas
     - trio
-    - python 3.13.0  # [py==313]
+    - python
   commands:
     - pip check
     - pygmentize -L | grep ipython
