@@ -1,5 +1,5 @@
 {% set name = "ipython" %}
-{% set version = "8.27.0" %}
+{% set version = "8.30.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 0b99a2dc9f15fd68692e898e5568725c6d49c527d36a9fb5960ffbdeaa82ff7e
+  sha256: cb0a405a306d2995a5cbb9901894d240784a9f341394c6ba3f4fe8c6eb89ff6e
+  patches:
+    - patches/Fix_pdb_issues_in_Python_3.13.1.patch
+
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
@@ -17,6 +20,9 @@ build:
     - ipython3 = IPython:start_ipython
 
 requirements:
+  build:
+    - patch     # [not win]
+    - m2-patch  # [win]
   host:
     - pip
     - python
@@ -49,6 +55,7 @@ test:
     - numpy >=1.23
     - pandas
     - trio
+    - python
   commands:
     - pip check
     - pygmentize -L | grep ipython
