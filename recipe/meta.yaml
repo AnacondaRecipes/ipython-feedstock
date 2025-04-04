@@ -1,5 +1,5 @@
 {% set name = "ipython" %}
-{% set version = "8.30.0" %}
+{% set version = "9.0.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: cb0a405a306d2995a5cbb9901894d240784a9f341394c6ba3f4fe8c6eb89ff6e
+  sha256: ec7b479e3e5656bf4f58c652c120494df1820f4f28f522fb7ca09e213c2aab52
   patches:
     - patches/Fix_pdb_issues_in_Python_3.13.1.patch
 
