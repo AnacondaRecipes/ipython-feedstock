@@ -4,7 +4,6 @@ import os
 import sys
 from pathlib import Path
 import IPython
-import IPython.conftest
 import IPython.core
 import IPython.core.magics
 import IPython.extensions
@@ -20,11 +19,9 @@ import IPython.terminal.shortcuts
 import IPython.terminal.shortcuts.auto_match
 import IPython.terminal.shortcuts.auto_suggest
 import IPython.terminal.shortcuts.filters
-import IPython.terminal.tests
 import IPython.testing
 import IPython.testing.plugin
 import IPython.testing.plugin.pytest_ipdoctest
-import IPython.testing.tests
 import IPython.utils._process_common
 import IPython.utils._process_emscripten
 import IPython.utils._process_posix
@@ -45,16 +42,13 @@ import IPython.utils.openpy
 import IPython.utils.process
 import IPython.utils.py3compat
 import IPython.utils.sentinel
-import IPython.utils.shimmodule
 import IPython.utils.strdispatch
 import IPython.utils.sysinfo
 import IPython.utils.syspathcontext
 import IPython.utils.tempdir
 import IPython.utils.terminal
-import IPython.utils.tests
 import IPython.utils.timing
 import IPython.utils.tokenutil
-import IPython.utils.ulinecache
 import IPython.utils.wildcard
 
 WIN = platform.system() == "Windows"
