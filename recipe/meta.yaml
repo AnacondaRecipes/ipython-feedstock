@@ -27,7 +27,7 @@ requirements:
     - python
     - colorama  # [win]
     - decorator
-    - exceptiongroup  # [py<311]
+    - ipython_pygments_lexers
     - jedi >=0.16
     - matplotlib-inline
     - pexpect >4.3  # [not win]
