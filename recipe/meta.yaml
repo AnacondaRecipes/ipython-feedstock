@@ -1,5 +1,5 @@
 {% set name = "ipython" %}
-{% set version = "8.30.0" %}
+{% set version = "9.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,22 +7,17 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: cb0a405a306d2995a5cbb9901894d240784a9f341394c6ba3f4fe8c6eb89ff6e
-  patches:
-    - patches/Fix_pdb_issues_in_Python_3.13.1.patch
+  sha256: a47e13a5e05e02f3b8e1e7a0f9db372199fe8c3763532fe7a1e0379e4e135f16
 
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  skip: true  # [py<310]
+  skip: true  # [py<311]
   entry_points:
     - ipython = IPython:start_ipython
     - ipython3 = IPython:start_ipython
 
 requirements:
-  build:
-    - patch     # [not win]
-    - m2-patch  # [win]
   host:
     - pip
     - python
@@ -32,7 +27,7 @@ requirements:
     - python
     - colorama  # [win]
     - decorator
-    - exceptiongroup  # [py<311]
+    - ipython_pygments_lexers
     - jedi >=0.16
     - matplotlib-inline
     - pexpect >4.3  # [not win]
@@ -43,6 +38,8 @@ requirements:
     - typing_extensions >=4.6 # [py<312]
 
 test:
+  source_files:
+    - tests
   requires:
     - pip
     - pytest
@@ -62,6 +59,7 @@ test:
     - ipython -h
     - ipython3 -h
     - export MIGRATING=false  # [unix]
+    - pytest tests -v
 
 about:
   home: https://ipython.org
