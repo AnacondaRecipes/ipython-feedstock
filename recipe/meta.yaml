@@ -38,6 +38,8 @@ requirements:
     - typing_extensions >=4.6 # [py<312]
 
 test:
+  source_files:
+    - tests
   requires:
     - pip
     - pytest
@@ -57,6 +59,7 @@ test:
     - ipython -h
     - ipython3 -h
     - export MIGRATING=false  # [unix]
+    - pytest tests -v
 
 about:
   home: https://ipython.org
