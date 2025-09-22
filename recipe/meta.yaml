@@ -47,7 +47,9 @@ test:
     - testpath
     - pickleshare
     - curio
+    - ipykernel
     - matplotlib-base !=3.2.0
+    - nbclient
     - nbformat
     - numpy >=1.23
     - pandas
