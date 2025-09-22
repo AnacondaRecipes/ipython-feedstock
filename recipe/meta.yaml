@@ -57,7 +57,7 @@ test:
     - python
   commands:
     - pip check
-    - pygmentize -L | grep ipython
+    - pygmentize -L | grep ipython  # [unix]
     - ipython -h
     - ipython3 -h
     - export MIGRATING=false  # [unix]
