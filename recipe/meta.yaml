@@ -1,5 +1,5 @@
 {% set name = "ipython" %}
-{% set version = "9.5.0" %}
+{% set version = "9.7.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 129c44b941fe6d9b82d36fc7a7c18127ddb1d6f02f78f867f402e2e3adde3113
+  sha256: 5f6de88c905a566c6a9d6c400a8fed54a638e1f7543d17aae2551133216b1e4e
 
 build:
   number: 0
@@ -25,44 +25,84 @@ requirements:
     - wheel
   run:
     - python
-    - colorama  # [win]
-    - decorator
-    - ipython_pygments_lexers
-    - jedi >=0.16
-    - matplotlib-inline
+    - colorama >=0.4.4  # [win]
+    - decorator >=4.3.2
+    - ipython_pygments_lexers >=1.0.0
+    - jedi >=0.18.1
+    - matplotlib-inline >=0.1.5
     - pexpect >4.3  # [not win]
     - prompt_toolkit >=3.0.41,<3.1.0
-    - pygments >=2.4.0
-    - stack_data
+    - pygments >=2.11.0
+    - stack_data >=0.6.0
     - traitlets >=5.13.0
     - typing_extensions >=4.6 # [py<312]
 
 test:
+  imports:
+    - IPython
+    - IPython.core
+    - IPython.core.magics
+    - IPython.extensions
+    - IPython.lib
+    - IPython.paths
+    - IPython.terminal.debugger
+    - IPython.terminal.embed
+    - IPython.terminal.interactiveshell
+    - IPython.terminal.magics
+    - IPython.terminal.prompts
+    - IPython.terminal.ptutils
+    - IPython.terminal.shortcuts
+    - IPython.terminal.shortcuts.auto_match
+    - IPython.terminal.shortcuts.auto_suggest
+    - IPython.terminal.shortcuts.filters
+    - IPython.testing
+    - IPython.testing.plugin
+    - IPython.testing.plugin.pytest_ipdoctest
+    - IPython.utils._process_common
+    - IPython.utils._process_emscripten
+    - IPython.utils._process_posix
+    - IPython.utils.capture
+    - IPython.utils.coloransi
+    - IPython.utils.contexts
+    - IPython.utils.data
+    - IPython.utils.decorators
+    - IPython.utils.dir2
+    - IPython.utils.encoding
+    - IPython.utils.frame
+    - IPython.utils.generics
+    - IPython.utils.importstring
+    - IPython.utils.io
+    - IPython.utils.ipstruct
+    - IPython.utils.module_paths
+    - IPython.utils.openpy
+    - IPython.utils.process
+    - IPython.utils.py3compat
+    - IPython.utils.sentinel
+    - IPython.utils.strdispatch
+    - IPython.utils.sysinfo
+    - IPython.utils.syspathcontext
+    - IPython.utils.tempdir
+    - IPython.utils.terminal
+    - IPython.utils.timing
+    - IPython.utils.tokenutil
+    - IPython.utils.wildcard
   source_files:
     - tests
+    - pyproject.toml
   requires:
     - pip
-    - pytest
-    - pytest-asyncio <0.22
-    - testpath
-    - pickleshare
-    - curio
-    - ipykernel
-    - matplotlib-base !=3.2.0
-    - nbclient
-    - nbformat
-    - numpy >=1.23
-    - pandas
-    - trio
-    - python
+    - pytest >=7.0.0
+    - pytest-asyncio >=1.0.0
+    - testpath >=0.2
+    - packaging >=20.1.0
+    - setuptools >=61.2
+    # not including test extra - to avoid circular dependencies
   commands:
     - pip check
     - pygmentize -L | grep ipython  # [unix]
     - ipython -h
     - ipython3 -h
-    - export MIGRATING=false  # [unix]
-    # Newly added raise_on_interrupt tests failing
-    - pytest tests -k "not (timeit_raise_on_interrupt or script_raise_on_interrupt or time_raise_on_interrupt)"
+    - pytest . -k "not (test_system_interrupt)"
 
 about:
   home: https://ipython.org
