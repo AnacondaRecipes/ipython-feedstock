@@ -50,7 +50,7 @@ test:
     - pytest-asyncio >=1.0.0
     - setuptools >=61.2
     - testpath >=0.2
-# If test_extra: "yes" test all tests; otherwise test only tha base tests for a new python version, e.i., py314.
+# If test_extra: "yes" test all tests; otherwise test only the base tests for a new python version, e.g., py314.
 {% if test_extra == 'yes' %}
     - curio
     - ipykernel >6.30  # [not py==314]
