@@ -1,5 +1,9 @@
 {% set name = "ipython" %}
-{% set version = "9.5.0" %}
+{% set version = "9.7.0" %}
+# When building out the initial package set for a new Python version the
+# recommendation is to run basic tests only, then build
+# matplotlib-base, pandas, trio,ipykernel, etc. and then run with `test_extra="yes"` to test all the tests.
+{% set test_extra = "no" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +11,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 129c44b941fe6d9b82d36fc7a7c18127ddb1d6f02f78f867f402e2e3adde3113
+  sha256: 5f6de88c905a566c6a9d6c400a8fed54a638e1f7543d17aae2551133216b1e4e
 
 build:
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   skip: true  # [py<311]
   entry_points:
@@ -21,19 +25,18 @@ requirements:
   host:
     - pip
     - python
-    - setuptools
-    - wheel
+    - setuptools >=77.0
   run:
     - python
-    - colorama  # [win]
-    - decorator
-    - ipython_pygments_lexers
-    - jedi >=0.16
-    - matplotlib-inline
+    - colorama >=0.4.4  # [win]
+    - decorator >=4.3.2
+    - ipython_pygments_lexers >=1.0.0
+    - jedi >=0.18.1
+    - matplotlib-inline >=0.1.5
     - pexpect >4.3  # [not win]
     - prompt_toolkit >=3.0.41,<3.1.0
-    - pygments >=2.4.0
-    - stack_data
+    - pygments >=2.11.0
+    - stack_data >=0.6.0
     - traitlets >=5.13.0
     - typing_extensions >=4.6  # [py<312]
 
@@ -42,19 +45,24 @@ test:
     - tests
   requires:
     - pip
-    - pytest
-    - pytest-asyncio <0.22
-    - testpath
-    - pickleshare
+    - packaging >=20.1.0
+    - pytest >=7.0.0
+    - pytest-asyncio >=1.0.0
+    - setuptools >=61.2
+    - testpath >=0.2
+# If test_extra: "yes" test all tests; otherwise test only tha base tests for a new python version, e.i., py314.
+{% if test_extra == 'yes' %}
     - curio
-    - ipykernel
-    - matplotlib-base !=3.2.0
+    - ipykernel >6.30  # [not py==314]
+    # jupyter_ai is not available yet on the main channel
+    #- jupyter_ai
+    - matplotlib-base >3.9.0  # [not py==314]
     - nbclient
     - nbformat
-    - numpy >=1.23
-    - pandas
-    - trio
-    - python
+    - numpy >=1.27
+    - pandas >2.1
+    - trio >=0.1.0
+{% endif %}
   commands:
     - pip check
     - pygmentize -L | grep ipython  # [unix]
