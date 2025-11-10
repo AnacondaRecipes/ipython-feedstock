@@ -53,10 +53,10 @@ test:
 # If test_extra: "yes" test all tests; otherwise test only the base tests for a new python version, e.g., py314.
 {% if test_extra == 'yes' %}
     - curio
-    - ipykernel >6.30  # [not py==314]
+    - ipykernel >6.30
     # jupyter_ai is not available yet on the main channel
     #- jupyter_ai
-    - matplotlib-base >3.9.0  # [not py==314]
+    - matplotlib-base >3.9.0
     - nbclient
     - nbformat
     - numpy >=1.27
