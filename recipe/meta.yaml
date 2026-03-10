@@ -39,6 +39,8 @@ requirements:
     - stack_data >=0.6.0
     - traitlets >=5.13.0
     - typing_extensions >=4.6  # [py<312]
+  run_constrained:
+    - argcomplete >=3.0
 
 test:
   source_files:
