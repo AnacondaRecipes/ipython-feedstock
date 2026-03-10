@@ -3,7 +3,7 @@
 # When building out the initial package set for a new Python version the
 # recommendation is to run basic tests only, then build
 # matplotlib-base, pandas, trio,ipykernel, etc. and then run with `test_extra="yes"` to test all the tests.
-{% set test_extra = "no" %}
+{% set test_extra = "yes" %}
 
 package:
   name: {{ name|lower }}
