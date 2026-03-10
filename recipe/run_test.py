@@ -75,10 +75,9 @@ IGNORE_GLOBS = [
 
 PYTEST_ARGS += sum([[f"--ignore-glob", glob] for glob in IGNORE_GLOBS], [])
 
+# skip due to path shortening of build directory against to home path '~' on Windows CI.
 if WIN:
-    pass
-else:
-    pass
+    PYTEST_SKIPS += ["test_info"]
 
 if LINUX:
     PYTEST_SKIPS += ["system_interrupt"]
