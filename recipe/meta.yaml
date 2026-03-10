@@ -72,7 +72,6 @@ test:
     - ipython -h
     - ipython3 -h
     - export MIGRATING=false  # [unix]
-    # Newly added raise_on_interrupt tests failing
     - pytest tests {{ test_ignore }}
 
 about:
