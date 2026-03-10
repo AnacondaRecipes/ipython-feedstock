@@ -1,9 +1,5 @@
 {% set name = "ipython" %}
 {% set version = "9.10.0" %}
-# When building out the initial package set for a new Python version the
-# recommendation is to run basic tests only, then build
-# matplotlib-base, pandas, trio,ipykernel, etc. and then run with `test_extra="yes"` to test all the tests.
-{% set test_extra = "yes" %}
 
 package:
   name: {{ name|lower }}
@@ -59,8 +55,7 @@ test:
     - pytest-asyncio >=1.0.0
     - setuptools >=61.2
     - testpath >=0.2
-# If test_extra: "yes" test all tests; otherwise test only the base tests for a new python version, e.g., py314.
-{% if test_extra == 'yes' %}
+    # [Optional] Use test extras (this doesn't add much to the build times)
     - curio
     - ipykernel >6.30
     # jupyter_ai is not available yet on the main channel
@@ -71,7 +66,6 @@ test:
     - numpy >=1.27
     - pandas >2.1
     - trio >=0.1.0
-{% endif %}
   commands:
     - pip check
     - pygmentize -L | grep ipython  # [unix]
