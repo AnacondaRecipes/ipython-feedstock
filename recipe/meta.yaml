@@ -46,6 +46,7 @@ requirements:
 
 # test_hist_file_config can fail randomly on osx-arm64 on CI
 {% set test_ignore = test_ignore + " --deselect=tests/test_history.py::test_hist_file_config" %}  # [osx]
+# skip due to path shortening of build directory against to home path '~' on Windows CI.
 {% set test_ignore = test_ignore + " --deselect=tests/test_oinspect.py::test_info" %}  # [win]
 
 test:
