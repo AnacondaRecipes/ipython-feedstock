@@ -75,11 +75,6 @@ IGNORE_GLOBS = [
 
 PYTEST_ARGS += sum([[f"--ignore-glob", glob] for glob in IGNORE_GLOBS], [])
 
-if WIN:
-    pass
-else:
-    pass
-
 if LINUX:
     PYTEST_SKIPS += ["system_interrupt"]
 
