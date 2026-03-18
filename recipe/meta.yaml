@@ -1,5 +1,5 @@
 {% set name = "ipython" %}
-{% set version = "9.10.0" %}
+{% set version = "9.11.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: cd9e656be97618a0676d058134cd44e6dc7012c0e5cb36a9ce96a8c904adaf77
+  sha256: 2a94bc4406b22ecc7e4cb95b98450f3ea493a76bec8896cda11b78d7752a6667
 
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  skip: true  # [py<311]
+  skip: true  # [py<312]
   entry_points:
     - ipython = IPython:start_ipython
     - ipython3 = IPython:start_ipython
@@ -21,20 +21,19 @@ requirements:
   host:
     - pip
     - python
-    - setuptools >=77.0
+    - setuptools >=80.0
   run:
     - python
     - colorama >=0.4.4  # [win]
-    - decorator >=4.3.2
+    - decorator >=5.1.0
     - ipython_pygments_lexers >=1.0.0
-    - jedi >=0.18.1
-    - matplotlib-inline >=0.1.5
-    - pexpect >4.3  # [not win]
+    - jedi >=0.18.2
+    - matplotlib-inline >=0.1.6
+    - pexpect >4.6  # [not win]
     - prompt_toolkit >=3.0.41,<3.1.0
-    - pygments >=2.11.0
+    - pygments >=2.14.0
     - stack_data >=0.6.0
-    - traitlets >=5.13.0
-    - typing_extensions >=4.6  # [py<312]
+    - traitlets >=0.6.0
   run_constrained:
     - argcomplete >=3.0
 
@@ -50,22 +49,20 @@ test:
     - tests
   requires:
     - pip
-    - packaging >=20.1.0
+    - packaging >=23.0.0
     - pytest >=7.0.0
     - pytest-asyncio >=1.0.0
-    - setuptools >=61.2
+    - setuptools >=80
     - testpath >=0.2
     # [Optional] Use test extras (this doesn't add much to the build times)
     - curio
     - ipykernel >6.30
-    # jupyter_ai is not available yet on the main channel
-    #- jupyter_ai
     - matplotlib-base >3.9.0
     - nbclient
     - nbformat
-    - numpy >=1.27
+    - numpy >=2
     - pandas >2.1
-    - trio >=0.1.0
+    - trio >=0.22.0
   commands:
     - pip check
     - pygmentize -L | grep ipython  # [unix]
