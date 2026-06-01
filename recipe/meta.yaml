@@ -1,5 +1,5 @@
 {% set name = "ipython" %}
-{% set version = "9.11.0" %}
+{% set version = "9.14.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 2a94bc4406b22ecc7e4cb95b98450f3ea493a76bec8896cda11b78d7752a6667
+  sha256: 6f27ff0f1d9ea050e0551f71568bc4b34d8aba579e8f111c5b4175f44ac6b4aa
 
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  skip: true  # [py<312]
+  skip: true  # [py<311]
   entry_points:
     - ipython = IPython:start_ipython
     - ipython3 = IPython:start_ipython
@@ -33,7 +33,9 @@ requirements:
     - prompt_toolkit >=3.0.41,<3.1.0
     - pygments >=2.14.0
     - stack_data >=0.6.0
-    - traitlets >=0.6.0
+    - traitlets >=5.13.0
+    - psutil >=7
+    - typing-extensions >=4.6 # [py<312]
   run_constrained:
     - argcomplete >=3.0
 
