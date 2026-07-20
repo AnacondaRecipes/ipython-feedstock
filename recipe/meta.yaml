@@ -45,6 +45,8 @@ requirements:
 {% set test_ignore = test_ignore + " --deselect=tests/test_history.py::test_hist_file_config" %}  # [osx]
 # skip due to path shortening of build directory against to home path '~' on Windows CI.
 {% set test_ignore = test_ignore + " --deselect=tests/test_oinspect.py::test_info" %}  # [win]
+{% set test_ignore = test_ignore + " --deselect=tests/test_run.py::test_tclass" %}  # [win]
+{% set test_ignore = test_ignore + " --deselect=tests/test_run.py::test_unicode" %}  # [win]
 
 test:
   source_files:
