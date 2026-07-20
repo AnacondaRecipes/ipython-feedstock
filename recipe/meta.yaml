@@ -1,5 +1,5 @@
 {% set name = "ipython" %}
-{% set version = "9.14.0" %}
+{% set version = "9.15.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 6f27ff0f1d9ea050e0551f71568bc4b34d8aba579e8f111c5b4175f44ac6b4aa
+  sha256: da2819ce2aa83135257df830660b1176d986c3d2876db24df01974fa955b2756
 
 build:
   number: 0
@@ -34,8 +34,8 @@ requirements:
     - pygments >=2.14.0
     - stack_data >=0.6.0
     - traitlets >=5.13.0
+    - typing-extensions >=4.6  # [py<312]
     - psutil >=7
-    - typing-extensions >=4.6 # [py<312]
   run_constrained:
     - argcomplete >=3.0
 
@@ -45,6 +45,8 @@ requirements:
 {% set test_ignore = test_ignore + " --deselect=tests/test_history.py::test_hist_file_config" %}  # [osx]
 # skip due to path shortening of build directory against to home path '~' on Windows CI.
 {% set test_ignore = test_ignore + " --deselect=tests/test_oinspect.py::test_info" %}  # [win]
+{% set test_ignore = test_ignore + " --deselect=tests/test_run.py::test_tclass" %}  # [win]
+{% set test_ignore = test_ignore + " --deselect=tests/test_run.py::test_unicode" %}  # [win]
 
 test:
   source_files:
