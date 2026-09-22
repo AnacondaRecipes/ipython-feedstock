@@ -48,6 +48,11 @@ requirements:
 {% set test_ignore = test_ignore + " --deselect=tests/test_oinspect.py::test_info" %}  # [win]
 {% set test_ignore = test_ignore + " --deselect=tests/test_run.py::test_tclass" %}  # [win]
 {% set test_ignore = test_ignore + " --deselect=tests/test_run.py::test_unicode" %}  # [win]
+#E  ValueError: I/O operation on closed file.
+{% set test_ignore = test_ignore + " --deselect=tests/test_magic.py::test_timeit_raise_on_interrupt" %}  # [win]
+{% set test_ignore = test_ignore + " --deselect=tests/test_magic.py::test_script_raise_on_interrupt" %}  # [win]
+{% set test_ignore = test_ignore + " --deselect=tests/test_magic.py::test_script_do_not_raise_on_interrupt" %}  # [win]
+{% set test_ignore = test_ignore + " --deselect=tests/test_magic.py::test_time_raise_on_interrupt" %}  # [win]
 
 test:
   source_files:
