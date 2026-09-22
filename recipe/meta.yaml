@@ -1,5 +1,5 @@
 {% set name = "ipython" %}
-{% set version = "9.15.0" %}
+{% set version = "9.17.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: da2819ce2aa83135257df830660b1176d986c3d2876db24df01974fa955b2756
+  sha256: 8919be8c27f20a6f4423145028063f6637b42a03ce57665bb12015ee1f073529
 
 build:
   number: 0
@@ -38,6 +38,7 @@ requirements:
     - psutil >=7
   run_constrained:
     - argcomplete >=3.0
+    - matplotlib-base >3.9
 
 {% set test_ignore = "" %}
 

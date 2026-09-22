@@ -40,7 +40,6 @@ import IPython.utils.ipstruct
 import IPython.utils.module_paths
 import IPython.utils.openpy
 import IPython.utils.process
-import IPython.utils.py3compat
 import IPython.utils.sentinel
 import IPython.utils.strdispatch
 import IPython.utils.sysinfo
