@@ -25,7 +25,6 @@ requirements:
   run:
     - python
     - colorama >=0.4.4  # [win]
-    - decorator >=5.1.0
     - ipython_pygments_lexers >=1.0.0
     - jedi >=0.18.2
     - matplotlib-inline >=0.1.6
