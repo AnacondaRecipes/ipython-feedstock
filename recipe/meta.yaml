@@ -68,7 +68,8 @@ test:
     # No py315 artifact on defaults. Not an upstream IPython defect.
     - ipykernel >6.30  # [py<315]
     - matplotlib-base >3.9.0  # [py<315]
-    - nbclient
+    # nbclient needs jupyter_client, which has no py315 build on defaults yet.
+    - nbclient  # [py<315]
     - nbformat
     - numpy >=2
     - pandas >2.1
