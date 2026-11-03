@@ -83,6 +83,11 @@ elif PYTEST_SKIPS:
     PYTEST_ARGS += ["-k", f"""not ({" or ".join(PYTEST_SKIPS) })"""]
 
 if __name__ == "__main__":
+    # Python 3.15: ipykernel and matplotlib-base have no py315 artifact.
+    # Not an upstream IPython defect. Skip the suite.
+    if sys.version_info >= (3, 15):
+        print("Skipping IPython pytest suite on Python 3.15", flush=True)
+        sys.exit(0)
     print("Building on Windows?      ", WIN)
     print("Building on Linux?        ", LINUX)
     print("Building for PyPy?        ", PYPY)
